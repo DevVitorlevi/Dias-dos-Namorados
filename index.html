@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Você, Meu Amor</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+            max-width: 800px;
+            padding: 20px;
+        }
+
+        .main-heart {
+            font-size: 100px;
+            color: #ff4d6d;
+            cursor: pointer;
+            animation: heartbeat 1.5s infinite, pulse 2s infinite;
+            text-shadow: 0 0 20px rgba(255, 77, 109, 0.7);
+            margin: 30px 0;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .main-heart:hover {
+            transform: scale(1.2);
+        }
+
+        .message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+            width: 70%;
+            max-width: 500px;
+            opacity: 0;
+            transition: all 0.5s ease;
+            z-index: 10;
+        }
+
+        .message.show {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+        }
+
+        .message h2 {
+            color: #ff4d6d;
+            margin-top: 0;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .message p {
+            color: #555;
+            line-height: 1.8;
+            font-size: 18px;
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .message .signature {
+            text-align: right;
+            font-style: italic;
+            color: #ff4d6d;
+            font-weight: bold;
+            margin-top: 30px;
+        }
+
+        .hearts-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .heart-icon {
+            position: absolute;
+            font-size: 20px;
+            opacity: 0;
+            pointer-events: none;
+            will-change: transform, opacity;
+        }
+
+        .click-hint {
+            color: white;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+            margin-top: 10px;
+            font-size: 1.5rem;
+            animation: fadeInOut 2s infinite;
+        }
+
+        @keyframes heartbeat {
+            0% {
+                transform: scale(1);
+            }
+
+            25% {
+                transform: scale(1.2);
+            }
+
+            50% {
+                transform: scale(1);
+            }
+
+            75% {
+                transform: scale(1.2);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                text-shadow: 0 0 0 0 rgba(255, 77, 109, 0.7);
+            }
+
+            70% {
+                text-shadow: 0 0 0 20px rgba(255, 77, 109, 0);
+            }
+
+            100% {
+                text-shadow: 0 0 0 0 rgba(255, 77, 109, 0);
+            }
+        }
+
+        @keyframes fadeInOut {
+            0% {
+                opacity: 0.5;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0.5;
+            }
+        }
+
+        .title {
+            color: white;
+            text-shadow: 0 0 10px rgba(255, 77, 109, 0.7);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="title">Feliz Dia dos Namorados, Meu Amor! 💝</h1>
+        <p class="click-hint">Clique no coração para ler minha mensagem ❤️</p>
+        <div class="main-heart" id="mainHeart">
+            <i class="fas fa-heart"></i>
+        </div>
+        <div class="message" id="message">
+            <h2>Para Você, Que Ilumina Minha Vida</h2>
+            <p>Meu amor, neste Dia dos Namorados, quero que você saiba o quanto você é especial para mim. Cada dia ao
+                seu lado é um presente que eu guardo com todo cuidado no meu coração.</p>
+
+            <p>Quando nossos olhos se encontram, sinto que o mundo para e tudo faz sentido. Seu sorriso é meu raio de
+                sol nos dias mais cinzentos, sua voz é a melodia que acalma minha alma.</p>
+
+            <p>Você transformou minha vida numa linda história de amor. Cada risada compartilhada, cada abraço
+                aconchegante, cada momento juntos - por mais simples que seja - se torna mágico porque é com você.</p>
+
+            <p>Prometo continuar sendo seu porto seguro, seu ombro amigo, seu parceiro em todas as aventuras. Vou amar
+                você em todos os seus momentos - nos dias de sol e nos de tempestade também.</p>
+
+            <p>Que nossa história continue sendo escrita com as tintas mais vibrantes do amor, da cumplicidade e do
+                respeito. Você é meu hoje, meu amanhã e meu sempre.</p>
+
+            <div class="signature">Com todo meu amor,<br>Para sempre seu</div>
+        </div>
+        <div class="hearts-container" id="heartsContainer"></div>
+    </div>
+
+    <script>
+        const mainHeart = document.getElementById('mainHeart');
+        const message = document.getElementById('message');
+        const heartsContainer = document.getElementById('heartsContainer');
+        let clickCount = 0;
+
+        mainHeart.addEventListener('click', () => {
+            message.classList.toggle('show');
+            clickCount++;
+
+            const heartCount = 30 + (clickCount * 20);
+
+            for (let i = 0; i < heartCount; i++) {
+                createFlyingHeart();
+            }
+
+            mainHeart.style.transform = 'scale(1.5)';
+            setTimeout(() => {
+                mainHeart.style.transform = 'scale(1)';
+            }, 300);
+        });
+
+        function createFlyingHeart() {
+            const heart = document.createElement('div');
+            heart.innerHTML = '<i class="fas fa-heart"></i>';
+            heart.classList.add('heart-icon');
+
+            const colors = [
+                '#ff4d6d', '#ff758f', '#ff8fa3', '#ffb3c1',
+                '#ffccd5', '#ff6b81', '#ff4757', '#ff0033',
+                '#ff1493', '#ff69b4', '#db7093', '#c71585'
+            ];
+            const color = colors[Math.floor(Math.random() * colors.length)];
+
+            const size = Math.random() * 30 + 10;
+            const mainRect = mainHeart.getBoundingClientRect();
+            const startX = mainRect.left + mainRect.width / 2;
+            const startY = mainRect.top + mainRect.height / 2;
+            const endX = Math.random() * window.innerWidth;
+            const endY = -50;
+            const duration = Math.random() * 3 + 2;
+            const delay = Math.random() * 0.5;
+            const startRotation = Math.random() * 360;
+            const endRotation = startRotation + (Math.random() * 30 - 15);
+
+            heart.style.color = color;
+            heart.style.fontSize = `${size}px`;
+            heart.style.left = `${startX}px`;
+            heart.style.top = `${startY}px`;
+
+            heartsContainer.appendChild(heart);
+
+            let startTime = null;
+
+            function animate(currentTime) {
+                if (!startTime) startTime = currentTime;
+                const elapsedTime = currentTime - startTime;
+                const progress = Math.min(elapsedTime / (duration * 1000), 1);
+
+                const x = startX + (endX - startX) * progress;
+                const y = startY + (endY - startY) * progress;
+                const opacity = 1 - progress;
+                const scale = 0.5 + progress * 0.5;
+                const rotation = startRotation + (endRotation - startRotation) * progress;
+
+                heart.style.left = `${x}px`;
+                heart.style.top = `${y}px`;
+                heart.style.opacity = opacity;
+                heart.style.transform = `translate(-50%, -50%) scale(${scale}) rotate(${rotation}deg)`;
+
+                if (progress < 1) {
+                    requestAnimationFrame(animate);
+                } else {
+                    heart.remove();
+                }
+            }
+
+            setTimeout(() => {
+                requestAnimationFrame(animate);
+            }, delay * 1000);
+        }
+
+        setInterval(() => {
+            if (Math.random() > 0.5) {
+                createFlyingHeart();
+            }
+        }, 500);
+    </script>
+</body>
+
+</html>
