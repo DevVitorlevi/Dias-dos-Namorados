@@ -16,17 +16,19 @@
             background: linear-gradient(45deg, #ff9a9e, #fad0c4);
             font-family: 'Arial', sans-serif;
             overflow: hidden;
+            padding: 20px;
+            box-sizing: border-box;
         }
 
         .container {
             text-align: center;
             position: relative;
             max-width: 800px;
-            padding: 20px;
+            width: 100%;
         }
 
         .main-heart {
-            font-size: 100px;
+            font-size: 80px;
             color: #ff4d6d;
             cursor: pointer;
             animation: heartbeat 1.5s infinite, pulse 2s infinite;
@@ -46,14 +48,15 @@
             left: 50%;
             transform: translate(-50%, -50%) scale(0);
             background-color: white;
-            padding: 30px;
+            padding: 25px;
             border-radius: 15px;
             box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
-            width: 70%;
+            width: 90%;
             max-width: 500px;
             opacity: 0;
             transition: all 0.5s ease;
             z-index: 10;
+            box-sizing: border-box;
         }
 
         .message.show {
@@ -64,16 +67,16 @@
         .message h2 {
             color: #ff4d6d;
             margin-top: 0;
-            font-size: 28px;
-            margin-bottom: 20px;
+            font-size: 22px;
+            margin-bottom: 15px;
         }
 
         .message p {
             color: #555;
-            line-height: 1.8;
-            font-size: 18px;
+            line-height: 1.6;
+            font-size: 16px;
             text-align: left;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .message .signature {
@@ -81,7 +84,7 @@
             font-style: italic;
             color: #ff4d6d;
             font-weight: bold;
-            margin-top: 30px;
+            margin-top: 20px;
         }
 
         .hearts-container {
@@ -106,7 +109,7 @@
             color: white;
             text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
             margin-top: 10px;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             animation: fadeInOut 2s infinite;
         }
 
@@ -163,8 +166,35 @@
         .title {
             color: white;
             text-shadow: 0 0 10px rgba(255, 77, 109, 0.7);
-            font-size: 2.5rem;
+            font-size: 2rem;
             margin-bottom: 10px;
+        }
+
+        /* Responsividade para celular */
+        @media (max-width: 480px) {
+            .main-heart {
+                font-size: 60px;
+            }
+
+            .message {
+                padding: 20px;
+            }
+
+            .message h2 {
+                font-size: 20px;
+            }
+
+            .message p {
+                font-size: 15px;
+            }
+
+            .click-hint {
+                font-size: 1rem;
+            }
+
+            .title {
+                font-size: 1.5rem;
+            }
         }
     </style>
 </head>
